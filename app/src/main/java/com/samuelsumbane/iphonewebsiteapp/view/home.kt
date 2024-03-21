@@ -29,13 +29,18 @@ import androidx.room.util.TableInfo
 import com.samuelsumbane.iphonewebsiteapp.R
 import com.samuelsumbane.iphonewebsiteapp.components.DivScreenLook
 import com.samuelsumbane.iphonewebsiteapp.components.MinDivScreenLook
+import com.samuelsumbane.iphonewebsiteapp.components.MinTextColumn
 import com.samuelsumbane.iphonewebsiteapp.components.SubTitleText
+import com.samuelsumbane.iphonewebsiteapp.components.TextColumn
+import com.samuelsumbane.iphonewebsiteapp.ui.theme.Dodgerblue
 import com.samuelsumbane.iphonewebsiteapp.ui.theme.Lightgray
 import com.samuelsumbane.iphonewebsiteapp.ui.theme.divShapes
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Home(navController: NavController){
+
+    val scrollState = rememberScrollState()
 
     Scaffold(
         topBar = {
@@ -50,7 +55,7 @@ fun Home(navController: NavController){
         Column(
             modifier = Modifier
                 .padding(paddingValues)
-                .fillMaxWidth()
+                .fillMaxSize()
                 .verticalScroll(rememberScrollState()),
         ) {
 //            Text(text = "text")
@@ -59,13 +64,12 @@ fun Home(navController: NavController){
                 modifier = Modifier
                     .fillMaxWidth()
                     .background(Color.White)
+                    .padding(15.dp)
             ){
                 Text(text="iPhone", color = Color.Black, fontWeight = FontWeight.Bold, fontSize = 36.sp)
                 Text(text="Designed to be loved", color = Color.Black, fontSize = 16.sp, fontWeight = FontWeight.Bold)
             }
             Spacer(modifier = Modifier.height(20.dp))
-
-//            Image(painter = painterResource(id = R.drawable.), contentDescription = "hero_iphone_15_pro")
 
             SubTitleText(text = "Get to know iPhone")
 
@@ -92,77 +96,165 @@ fun Home(navController: NavController){
                 Spacer(Modifier.width(20.dp))
                 DivScreenLook( "Privacy", "Your data. Just where\nyou want it.", "privacy_small_2x")
                 Spacer(Modifier.width(20.dp))
-                DivScreenLook( "Environment", "Reuse. Repeat.", "environment_small_2x")
+                DivScreenLook( "Environment", "Reuse. Repeat.", "environment_small_2x", Color.Black)
             }
 
-            Spacer(Modifier.height(40.dp))
+            Spacer(Modifier.height(70.dp))
 
+            // very lightgray column
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(500.dp)
+                    .height(1800.dp)
                     .background(Lightgray)
+                    .padding(0.dp, 20.dp, 0.dp, 0.dp)
             ){
                 SubTitleText(text = "Explore the lineup.")
+
+                TextButton(
+                    onClick = { /*TODO*/ },
+                    Modifier.padding(5.dp)
+                ) {
+                    Text("Compare all models >", fontSize = 16.sp,
+                        color = Dodgerblue)
+                }
 
                 Row(modifier = Modifier
                     .padding(15.dp)
                     .horizontalScroll(rememberScrollState())
                 ){
-                    MinDivScreenLook( phonePicName = "iphone_15_small_2x", colorPicName = "swatch_iphone_se_small",
-                        iphoneVersion = "iPhone 15", subTitle = "a total", price = "From $34"
+                    MinDivScreenLook( phonePicName = "compare_iphone_15_pro_small", colorPicName = "swatch_iphone_se_small",
+                        iphoneVersion = "iPhone 15 Pro", subTitle = "The ultimate iPhone", price = "From $999 or $41.62/mo.\nfor 24 mo."
                     )
-                    MinDivScreenLook( phonePicName = "iphone_15_small_2x", colorPicName = "swatch_iphone_se_small",
-                    iphoneVersion = "iPhone 15", subTitle = "a total", price = "From $34"
+
+                    MinDivScreenLook( phonePicName = "compare_iphone_15_small", colorPicName = "swatch_iphone_se_small",
+                        iphoneVersion = "iPhone 15", subTitle = "A total powerhouse.", price = "From $799 or $33.29/mo.\nfor 24 mo."
                     )
-                    MinDivScreenLook( phonePicName = "iphone_15_small_2x", colorPicName = "swatch_iphone_se_small",
-                        iphoneVersion = "iPhone 15", subTitle = "a total", price = "From $34"
+
+                    MinDivScreenLook( phonePicName = "compare_iphone_14_medium_2x", colorPicName = "swatch_iphone_se_small",
+                        iphoneVersion = "iPhone 14", subTitle = "As amazing as ever.", price = "From $699 or $29.12/mo.\nfor 24 mo."
                     )
+
+                    MinDivScreenLook( phonePicName = "iphone_13_small_2x", colorPicName = "swatch_iphone_se_small",
+                        iphoneVersion = "iPhone 14", subTitle = "As amazing as ever.", price = "From $699 or $29.12/mo.\nfor 24 mo."
+                    )
+
+                    MinDivScreenLook( phonePicName = "compare_iphone_se_medium_2x", colorPicName = "swatch_iphone_se_small",
+                        iphoneVersion = "iPhone SE", subTitle = "Serious power. Serious value.", price = "From $429 or $17.87/mo."
+                    )
+
                 }
-            }
 
-            /// i'll jump something
-            SubTitleText(text = "Take a closer look at\nour latest models.")
+                /// i'll jump something
+                SubTitleText(text = "Take a closer look at\nour latest models.")
 
-            Spacer(modifier = Modifier.height(15.dp))
+                Spacer(modifier = Modifier.height(15.dp))
 
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(670.dp)
-                    .padding(15.dp)
-//                    .background(Color.Red)
-            ){
-                Image(
-                    painter = painterResource(id = R.drawable.guided_tour__c40f88on9o8y_xlarge),
-                    contentDescription = "latest models",
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(15.dp)
-                        .clip(divShapes.large),
-                    contentScale = ContentScale.FillHeight
-                )
                 Column(
-                    modifier = Modifier
-                        .fillMaxWidth(),
-                    horizontalAlignment = Alignment.CenterHorizontally
-
+                    Modifier.fillMaxWidth()
                 ){
-                    Text("A Guided Tour of\niPhone 15 & iPhone 15 Pro",
-                        textAlign = TextAlign.Center, color = Color.White,
-                        fontWeight = FontWeight.Bold, fontSize = 19.sp,
-                        modifier = Modifier.padding(0.dp, 45.dp, 0.dp, 30.dp)
-                    )
 
-                    Button(
-                        onClick = {},
-//                        colors = ButtonColors(Color.LightGray, Color.Red, Color.DarkGray, Color.White)
-                            colors = ButtonDefaults.buttonColors(containerColor = Color.White, contentColor = Color.Black )
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(670.dp)
+                            .padding(15.dp)
+                    ){
+                        Image(
+                            painter = painterResource(id = R.drawable.guided_tour__c40f88on9o8y_xlarge),
+                            contentDescription = "latest models",
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .padding(15.dp)
+                                .clip(divShapes.large),
+                            contentScale = ContentScale.FillHeight
+                        )
+                        Column(
+                            modifier = Modifier
+                                .fillMaxWidth(),
+                            horizontalAlignment = Alignment.CenterHorizontally
+
                         ){
-                        Text("Watch the film")
+                            Text("A Guided Tour of\niPhone 15 & iPhone 15 Pro",
+                                textAlign = TextAlign.Center, color = Color.White,
+                                fontWeight = FontWeight.Bold, fontSize = 19.sp,
+                                modifier = Modifier.padding(0.dp, 45.dp, 0.dp, 30.dp)
+                            )
+                            Button(
+                                onClick = {},
+                                colors = ButtonDefaults.buttonColors(containerColor = Color.White, contentColor = Color.Black )
+                            ){
+                                Text("Watch the film")
+                            }
+                        }
+                    }
+
+                    SubTitleText("Why Apple is the best\nplace to buy iPhone")
+                    Row(Modifier.padding(15.dp)){
+                        Text("Shop iPhone >", fontSize = 12.sp, color = Dodgerblue)
+                    }
+                    Row(
+                        Modifier
+//                            .fillMaxWidth()
+//                            .height(500.dp)
+                            .padding(15.dp)
+                            .horizontalScroll(rememberScrollState()),
+//                            .background(Color.Red)
+                    ){
+                        // I don't know how, but I can't get this elements padding
+                        // I will make manually.
+
+                        MinTextColumn("Get flexible delivery\n and easy pickup.", "Choose two-hour delivery from an Apple Store")
+                        Spacer(Modifier.width(15.dp))
+                        MinTextColumn("Shop live with a\nSpecialist.", "Let us guide you live video\nand answer all of your questions.")
+                        Spacer(Modifier.width(15.dp))
+                        MinTextColumn("Get to know your\nnew iPhone.", "Learn how to get the most out of\nyour new iPhone with a free\none-on-Personal Session.")
+                        Spacer(Modifier.width(15.dp))
+                        MinTextColumn("Explore a shopping\n experience designed\naround you.", "When you shop in the\nApple Store app.")
                     }
                 }
             }
+
+            // last white Column
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(1900.dp)
+                    .background(Color.White)
+            ) {
+                SubTitleText("iPhone essentials")
+                Row(Modifier.padding(15.dp)){
+                    Text("Shop iPhone >", fontSize = 12.sp, color = Dodgerblue)
+                }
+
+                Row(
+                    modifier = Modifier
+                        .padding(15.dp)
+                        .horizontalScroll(scrollState)
+                ){
+                    TextColumn(
+                        "MagSafe",
+                        "Snap on a magnetic case, wallet\n or both. And get fast, efficient \nwireless charging",
+                        "Shop MagSafe accessories",
+                        "compare_iphone_15_small"
+                    )
+                    Spacer(Modifier.width(15.dp))
+                    // I had to put width to them.
+                    TextColumn(
+                        "AirTag",
+                        "Attach one to your keys. Put\nanother in your backpack. if\nthey're misplaced, just use the\n Find My app.",
+                         "Buy",
+                        "compare_iphone_15_small"
+                    )
+                }
+
+                SubTitleText("Significant others.")
+
+
+            }
+
+
+
 
 
         }

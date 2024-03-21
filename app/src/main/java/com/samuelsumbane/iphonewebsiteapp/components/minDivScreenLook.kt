@@ -112,10 +112,10 @@ fun MinDivScreenLook(phonePicName:String, colorPicName:String,
 
 
 
-@Preview
-@Composable
-fun P(){
-    MinDivScreenLook( phonePicName = "iphone_15_small_2x", colorPicName = "swatch_iphone_se_small",
-        iphoneVersion = "iPhone 15", subTitle = "a total", price = "From $34"
-    )
-}
+//@Preview
+//@Composable
+//fun P(){
+//    MinDivScreenLook( phonePicName = "iphone_15_small_2x", colorPicName = "swatch_iphone_se_small",
+//        iphoneVersion = "iPhone 15", subTitle = "a total", price = "From $34"
+//    )
+//}

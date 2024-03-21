@@ -29,11 +29,9 @@ import androidx.compose.ui.layout.ContentScale
 import com.samuelsumbane.iphonewebsiteapp.ui.theme.btnShapes
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.graphics.painter.Painter
-import com.samuelsumbane.iphonewebsiteapp.R
-
 
 @Composable
-fun DivScreenLook(titleText:String, contentText:String, imageName:String){
+fun DivScreenLook(titleText:String, contentText:String, imageName:String, textColor: Color = Color.White){
 
     val context = LocalContext.current
     val imageResource = context.resources.getIdentifier(imageName, "drawable", context.packageName)
@@ -49,7 +47,6 @@ fun DivScreenLook(titleText:String, contentText:String, imageName:String){
 
         Image(
             painter = painter,
-//            painter = painterResource(id = R.drawable.compare_iphone_14__cffjiolduwb6_medium_2x),
             contentDescription = "divImage",
             modifier = Modifier
                 .fillMaxSize()
@@ -66,7 +63,7 @@ fun DivScreenLook(titleText:String, contentText:String, imageName:String){
             Column(modifier = Modifier.height(200.dp)){
                 Text(
                     titleText,
-                    color = Color.White,
+                    color = textColor,
                     fontWeight = FontWeight.Bold,
                     fontSize = 17.sp,
                     modifier = Modifier.fillMaxWidth()
@@ -76,7 +73,7 @@ fun DivScreenLook(titleText:String, contentText:String, imageName:String){
 
                 Text(
                     contentText,
-                    color = Color.White,
+                    color = textColor,
                     fontWeight = FontWeight.Bold,
                     fontSize = 20.sp,
                     modifier = Modifier.fillMaxWidth()
