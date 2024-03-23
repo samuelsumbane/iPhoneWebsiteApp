@@ -69,6 +69,7 @@ fun TextColumn(titleText:String, contentText:String, linkText:String, imageName:
                 contentDescription = "divImage",
                 modifier = Modifier
                     .width(190.dp)
+                    .background(Color.Transparent)
                     .height(280.dp),
                 contentScale = ContentScale.Crop
             )

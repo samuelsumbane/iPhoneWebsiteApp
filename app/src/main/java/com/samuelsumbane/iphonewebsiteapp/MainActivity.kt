@@ -22,7 +22,6 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-
 //                    val state by viewModel.state.collectAsState()
 //                    val cstate
                     val navController = rememberNavController()

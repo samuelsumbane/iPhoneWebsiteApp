@@ -7,6 +7,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -27,6 +29,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import androidx.room.util.TableInfo
 import com.samuelsumbane.iphonewebsiteapp.R
+import com.samuelsumbane.iphonewebsiteapp.components.ColumnWithTab
 import com.samuelsumbane.iphonewebsiteapp.components.DivScreenLook
 import com.samuelsumbane.iphonewebsiteapp.components.MinDivScreenLook
 import com.samuelsumbane.iphonewebsiteapp.components.MinTextColumn
@@ -48,6 +51,12 @@ fun Home(navController: NavController){
                 title = { /*TODO*/ },
                 actions = {
                     Icon(imageVector = Icons.Default.Search, contentDescription = "test")
+//                    Icon(imageVector = Icons.Default., contentDescription = "test")
+                    Spacer(Modifier.width(12.dp))
+                    Icon(imageVector = Icons.Default.Menu, contentDescription = "menu")
+                },
+                navigationIcon = {
+                    Icon(imageVector = Icons.Default.Add, contentDescription = "iPhoneIcon")
                 }
             )
         }
@@ -59,7 +68,20 @@ fun Home(navController: NavController){
                 .verticalScroll(rememberScrollState()),
         ) {
 //            Text(text = "text")
-            // black column
+
+            Column(
+                Modifier.fillMaxWidth()
+                    .height(110.dp)
+                    .padding(0.dp, 20.dp)
+                .background(Lightgray),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
+                Text("Get $180-$630 in credit toward iPhone 15 or\n" +
+                        "iPhone 15 Pro when you trade in iPhone 11\n" +
+                        "or higher", textAlign = TextAlign.Center)
+            }
+
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -161,7 +183,7 @@ fun Home(navController: NavController){
                             .padding(15.dp)
                     ){
                         Image(
-                            painter = painterResource(id = R.drawable.guided_tour__c40f88on9o8y_xlarge),
+                            painter = painterResource(id = R.drawable.guided_tour_large),
                             contentDescription = "latest models",
                             modifier = Modifier
                                 .fillMaxSize()
@@ -236,7 +258,7 @@ fun Home(navController: NavController){
                         "MagSafe",
                         "Snap on a magnetic case, wallet\n or both. And get fast, efficient \nwireless charging",
                         "Shop MagSafe accessories",
-                        "compare_iphone_15_small"
+                        "magsafe_small_2x"
                     )
                     Spacer(Modifier.width(15.dp))
                     // I had to put width to them.
@@ -244,12 +266,15 @@ fun Home(navController: NavController){
                         "AirTag",
                         "Attach one to your keys. Put\nanother in your backpack. if\nthey're misplaced, just use the\n Find My app.",
                          "Buy",
-                        "compare_iphone_15_small"
+                        "airtag_small_2x"
                     )
                 }
 
                 SubTitleText("Significant others.")
 
+                Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally){
+                    ColumnWithTab()
+                }
 
             }
 
